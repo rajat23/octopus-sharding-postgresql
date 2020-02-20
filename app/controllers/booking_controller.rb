@@ -12,6 +12,7 @@ class BookingController < ApplicationController
     def create
       @booking = Booking.create(booking_params)
       @booking.save!
+      UpdateBookingStatusWorker.perform_async(@booking.id)
     end
 
     def booking_params

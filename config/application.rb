@@ -8,3 +8,4 @@ module RailsJruby
   class Application < Rails::Application
   end
 end
+

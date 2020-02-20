@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  host: db
+  password:
+  pool: 5
+
+
+development:
+  <<: *default
+  database: transport_dev
+
+test:
+  <<: *default
+  database: transport_test

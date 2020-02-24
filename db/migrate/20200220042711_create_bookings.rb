@@ -1,4 +1,5 @@
 class CreateBookings < ActiveRecord::Migration[5.2]
+  using(:old, :new)
   def change
     create_table :bookings do |t|
       t.bigint :booking_id

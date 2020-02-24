@@ -1,0 +1,19 @@
+octopus:
+  environments:
+    - development
+  development:
+    shards:
+      old:
+        host: db
+        adapter: postgresql
+        database: transport_dev
+        username: postgres
+        password:
+        pool: 5
+      new:
+        host: db
+        adapter: postgresql
+        database: transport_dev_new
+        username: postgres
+        password:
+        pool: 5

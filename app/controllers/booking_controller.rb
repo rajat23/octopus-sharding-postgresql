@@ -4,18 +4,29 @@ end
 class BookingController < ApplicationController
   # GET method to get a booking by id
     def show
-      @booking = Booking.find(params[:id])
+      if(params[:id].to_i % 2 == 0)
+        @booking = Booking.using(:old).where(customer_id: params[:id]).take!
+      else
+        @booking = Booking.using(:new).where(customer_id: params[:id]).take!
+      end
       render json: { booking: @booking.as_json }, status: :ok
     end
 
   # POST
     def create
-      @booking = Booking.create(booking_params)
-      @booking.save!
-      UpdateBookingStatusWorker.perform_async(@booking.id)
+      if(booking_params[:customer_id].to_i % 2==0)
+        @booking = Booking.using(:old).create(booking_params)
+        puts "inside old"
+        @booking.save!
+      else
+        @booking = Booking.using(:new).create(booking_params)
+        puts "inside new"
+        @booking.save!
+      end
+      UpdateBookingStatusWorker.perform_async(@booking.customer_id, @booking.id)
     end
 
     def booking_params
-        params.require(:booking).permit(:is_active, :distance_in_meters)
+        params.require(:booking).permit(:customer_id, :is_active, :distance_in_meters)
     end
 end

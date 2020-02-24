@@ -54,3 +54,5 @@ group :development, :test do
 end
 
 gem 'sidekiq'
+
+gem 'ar-octopus', '0.10.2', :require => "octopus"

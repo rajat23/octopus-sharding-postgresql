@@ -1,0 +1,87 @@
+{
+	"info": {
+		"_postman_id": "006f1074-8910-498f-a0ff-a41cf6f80ad2",
+		"name": "octopus-mvp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/booking",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"booking\": {\n\t\t\"customer_id\": 1,\n\t\t\"is_active\": \"true\",\n\t\t\"distance_in_meters\": \"124\"\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/booking/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"booking",
+						"1"
+					]
+				},
+				"description": "create booking with given params"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/booking/1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/booking/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"booking",
+						"1"
+					]
+				},
+				"description": "retrive booking using customer id"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

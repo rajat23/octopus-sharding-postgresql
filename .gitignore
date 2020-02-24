@@ -23,4 +23,5 @@
 /public/assets
 .byebug_history
 
-.idea/
+.DS_Store
+.idea
